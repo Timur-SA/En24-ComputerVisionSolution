@@ -1,5 +1,7 @@
 {
     "version": "DEV",
+    "windowName": "CV by Ritme",
+    "path": "SOURCES/example.png",
     "RED": [
       [0,0,0],
       [255, 255, 255]
