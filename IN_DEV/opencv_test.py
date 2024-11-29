@@ -1,6 +1,6 @@
 import cv2
 
-NAME = "test2.png"
+NAME = "C:/Users/user/Desktop/СтепановТА/En+ 24-25/En24-ComputerVisionSolution/SOURCES/example.png"
 
 windowName = "Фото"
 windowNameR = "R канал"
@@ -27,7 +27,7 @@ def findGreen(image):
     return cv2.inRange(image, lowG, highG)
 
 
-def oldFindObject():
+"""def oldFindObject():
     moments = cv2.moments(findGreen(readImage()), 1) # получим моменты 
     x_moment = moments['m01']
     y_moment = moments['m10']
@@ -36,7 +36,7 @@ def oldFindObject():
     y = int(y_moment / area) # и выведем текст на изображение
     cv2.putText(image, "Red!", (x,y), cv2.FONT_HERSHEY_SIMPLEX, 1, (255,255,255), 2)
 
-    return image
+    return image"""
 
 def FindObject():
     image = readImage()
