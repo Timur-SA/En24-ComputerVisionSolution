@@ -18,16 +18,21 @@ def MoveForward():
     response = requests.get(f"http://{ip}/f")
     print(f"Вперёд")
 
-def MoveForward():
-    response = requests.get(f"http://{ip}/f")
-    print(f"Вперёд")
+def MoveBack():
+    response = requests.get(f"http://{ip}/b")
+    print(f"Назад")
 
-def MoveForward():
+def MoveRight():
+    response = requests.get(f"http://{ip}/r")
+    print(f"Вправо")
 
-def MoveForward():
+def MoveLeft():
+    response = requests.get(f"http://{ip}/l")
+    print(f"Влево")
 
-def MoveForward():
-
+def MoveStop():
+    response = requests.get(f"http://{ip}/s")
+    print(f"Стоп")
 
 
 def standartTest():
@@ -57,15 +62,15 @@ def manualControl():
         direction = input()
 
         if(direction == "в"):
-        
+            MoveForward()
         elif(direction == "н"):
-        
+            MoveBack()
         elif(direction == "п"):
-        
+            MoveRight()
         elif(direction == "л"):
-        
+            MoveLeft()
         elif(direction == "с"):
-        
+            MoveStop()
         else:
             continue
 
