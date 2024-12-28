@@ -1,6 +1,6 @@
 import requests
 import time
-from os import run
+import os
 
 
 print("Для запуска введите 2 последние цифры IP")
@@ -76,7 +76,7 @@ def manualControl():
 
 
 def main():
-    run("cls")
+    os.run("cls")
     print("=== Д/У - En24 - byRitme ===")
     mode = int(input("Выбор режима (0 - Тест моторов, 1 - Ручное Д/У, -1 - Выход): "))
     
