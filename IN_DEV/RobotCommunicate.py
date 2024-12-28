@@ -76,7 +76,7 @@ def manualControl():
 
 
 def main():
-    os.run("cls")
+    os.system("cls")
     print("=== Д/У - En24 - byRitme ===")
     mode = int(input("Выбор режима (0 - Тест моторов, 1 - Ручное Д/У, -1 - Выход): "))
     
