@@ -1,43 +1,64 @@
 import cv2 as cv
-import AdvancedUI as aui
-
-camera = cv.VideoCapture(1)
-cv.namedWindow("CameraTest")
 
 
-# Тест Камеры
-def CameraTest():
-    while True:
-        ret, image = camera.read() # Читаем камеру
-        
-        if not ret:
-            print("ОШИБКА: Камера не распознана")
-            break
 
-        cv.imshow("CameraTest", image)
+class CaptureImage:
 
-        cv.waitKey(0)
-
-# Захват Image с камеры
-def CameraCapture():
-    ret, image = camera.read()
-    if not ret:
-        print("ОШИБКА: Камера не распознана.")
+    def CamError():
         raise RuntimeWarning("Camera")
+    
+    def __init__(self):
+        cam = cv.VideoCapture(1)
+        isCaptured, self.srcImg = cam.read()
+        
+        if(not isCaptured):
+            self.CamError()
 
-    return ImageProcess(image)
+        self.mainImg = cv.cvtColor(self.srcImg, cv.COLOR_RGB2HSV)
+        #Обработка изображения
+
+        cam.release() #???
+
+    def GetImage(self):
+        return self.mainImg
+
+
+ci = CaptureImage()
+img = ci.GetImage()
+
+print(ci)
+print(img)
+input()
+cv.destroyAllWindows()
+
+
 
 
 # Постобработка Image
-def ImageProcess(sorceImage):
-    brightness = -10
-    contrast = 1.2
+# def ImageProcess(sorceImage):
+#     brightness = -10
+#     contrast = 1.2
 
-    sorceImage = cv.cvtColor(sorceImage, cv.COLOR_RGB2HSV)  
-    return cv.addWeighted(sorceImage, contrast, 0, brightness, 0) 
+#     sorceImage = cv.cvtColor(sorceImage, cv.COLOR_RGB2HSV)  
+#     return cv.addWeighted(sorceImage, contrast, 0, brightness, 0) 
 
 
-aui.ShowImage(CameraCapture())
+# def CameraTest():
+#     while True:
+#         ret, image = camera.read() # Читаем камеру
+        
+#         if not ret:
+#             print("ОШИБКА: Камера не распознана")
+#             break
 
-camera.release() # Запускаем камеру (?)
-cv.destroyAllWindows()
+#         cv.imshow("CameraTest", image)
+
+#         cv.waitKey(0)
+
+# def CameraCapture():
+#     ret, image = camera.read()
+#     if not ret:
+#         print("ОШИБКА: Камера не распознана.")
+#         raise RuntimeWarning("Camera")
+
+#     return ImageProcess(image)
