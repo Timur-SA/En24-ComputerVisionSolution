@@ -1,35 +1,30 @@
 import cv2 as cv
 
-
-
 class CaptureImage:
-
-    def CamError():
+    def CamError(self):
         raise RuntimeWarning("Camera")
     
     def __init__(self):
-        cam = cv.VideoCapture(1)
-        isCaptured, self.srcImg = cam.read()
+        self.cam = cv.VideoCapture(1)
+        self.cam.release() #???
+
+    def GetImage(self):
+        isCaptured, self.srcImg = self.cam.read()
         
         if(not isCaptured):
             self.CamError()
 
         self.mainImg = cv.cvtColor(self.srcImg, cv.COLOR_RGB2HSV)
         #Обработка изображения
-
-        cam.release() #???
-
-    def GetImage(self):
         return self.mainImg
 
+if __name__ == "__main__":
+    ci = CaptureImage()
+    img = ci.GetImage()
 
-ci = CaptureImage()
-img = ci.GetImage()
-
-print(ci)
-print(img)
-input()
-cv.destroyAllWindows()
+    print(ci)
+    print(img)
+    input()
 
 
 
