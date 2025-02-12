@@ -8,6 +8,12 @@ class CaptureImage:
         self.cam = cv.VideoCapture(1)
         #self.cam.release() #???
 
+    def addWeights(img):
+        brightness = -10
+        contrast = 1.2
+
+        return  
+
     def GetImage(self):
         isCaptured, self.srcImg = self.cam.read()
         
@@ -15,7 +21,12 @@ class CaptureImage:
             self.CamError()
 
         self.mainImg = cv.cvtColor(self.srcImg, cv.COLOR_BGR2HSV)
+        self.mainImg = cv.addWeighted(self.mainImg, 1.2, 0, -10, 0)
         return self.mainImg
+
+
+
+
 
 if __name__ == "__main__":
     ci = CaptureImage()
@@ -30,11 +41,10 @@ if __name__ == "__main__":
 
 # Постобработка Image
 # def ImageProcess(sorceImage):
-#     brightness = -10
-#     contrast = 1.2
+#     
 
 #     sorceImage = cv.cvtColor(sorceImage, cv.COLOR_RGB2HSV)  
-#     return cv.addWeighted(sorceImage, contrast, 0, brightness, 0) 
+#     
 
 
 # def CameraTest():
